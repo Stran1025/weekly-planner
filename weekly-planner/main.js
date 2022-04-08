@@ -1,3 +1,10 @@
+var data = {
+  view: '',
+  events: [],
+  editing: null,
+  nextEventId: 1
+};
+
 var $addEntryButton = document.querySelector('#add-entry');
 var $modal = document.querySelector('#modal');
 var $form = document.querySelector('#entry-form');
