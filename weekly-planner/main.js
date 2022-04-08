@@ -1,7 +1,7 @@
 var data = {
   view: '',
   days: {
-    monday: [{ time: '10:00', description: 'test' }],
+    monday: [],
     tuesday: [],
     wednesday: [],
     thursday: [],
@@ -42,6 +42,14 @@ var $dayRow = document.querySelector('#day-row');
 var $taskListHeading = document.querySelector('#task-list-heading');
 var $table = document.querySelector('#display-table');
 
+$table.addEventListener('click', tableClickHandler);
+function tableClickHandler(event) {
+  if (!event.target.matches('button')) {
+    return;
+  }
+  $modal.classList.remove('hidden');
+}
+
 $addEntryButton.addEventListener('click', handleEntry);
 function handleEntry(event) {
   $modal.classList.remove('hidden');
@@ -51,10 +59,13 @@ $form.addEventListener('submit', handleSubmit);
 function handleSubmit(event) {
   event.preventDefault();
   var obj = {};
+  obj.dayOfTheWeek = $daySelect.value;
+  obj.eventId = data.nextEventId;
   obj.time = $timeSelect.value + ' ' + $amPm.value.toUpperCase();
   obj.description = $description.value;
   $modal.classList.add('hidden');
   data.days[$daySelect.value].push(obj);
+  data.nextEventId++;
 }
 
 $dayRow.addEventListener('click', dayButton);
@@ -81,11 +92,20 @@ function createTable(array) {
     var $tr = document.createElement('tr');
     var $timeTD = document.createElement('td');
     var $descrTD = document.createElement('td');
+    var $updateButton = document.createElement('button');
 
     $timeTD.textContent = array[i].time;
     $descrTD.textContent = array[i].description;
+    $descrTD.className = 'large-td';
+    $timeTD.className = 'small-td';
+    $updateButton.textContent = 'Update';
+    $updateButton.setAttribute('data-event-id', array[i].eventId);
+    $updateButton.setAttribute('data-days', array[i].dayOfTheWeek);
+    $updateButton.className = 'update-button button';
+    $tr.setAttribute('data-event-id', array[i].eventId);
     $tr.appendChild($timeTD);
     $tr.appendChild($descrTD);
+    $descrTD.appendChild($updateButton);
     $tbody.appendChild($tr);
   }
   return $tbody;
