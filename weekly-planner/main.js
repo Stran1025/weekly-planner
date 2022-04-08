@@ -13,6 +13,24 @@ var data = {
   nextEventId: 1
 };
 
+var previousEntriesJSON = localStorage.getItem('weekly-planner');
+if (previousEntriesJSON !== null) {
+  data = JSON.parse(previousEntriesJSON);
+}
+
+window.addEventListener('beforeunload', beforeUnload);
+function beforeUnload(event) {
+  var entriesJSON = JSON.stringify(data);
+  localStorage.setItem('weekly-planner', entriesJSON);
+}
+
+window.addEventListener('DOMContentLoaded', loadDefault);
+function loadDefault(event) {
+  var start = createTable(data.days.monday);
+  $table.appendChild(start);
+  $taskListHeading.textContent = 'Scheduled Event for Monday';
+}
+
 var $addEntryButton = document.querySelector('#add-entry');
 var $modal = document.querySelector('#modal');
 var $form = document.querySelector('#entry-form');

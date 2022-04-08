@@ -91,8 +91,17 @@ textarea {
 
 table {
   border: 1px solid black;
+  width: 60%;
 }
 
 td {
   border: 1px solid black;
+}
+
+.small-td {
+  width: 25%;
+}
+
+.large-td {
+  width: 75%;
 }
