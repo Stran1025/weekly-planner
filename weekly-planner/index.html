@@ -5,10 +5,50 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weekly Planner</title>
-  <link href="styles.css">
+  <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-
+  <div class="container hidden p-relative">
+    <div class="row">
+      <div class="col-full text-center">
+        <h1 class="">Weekly Planner</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-full text-center">
+        <button id="add-entry" class="button text-center">
+          Add Entry
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="col-full overlay"></div>
+    <div class="row modal">
+      <div class="col-full text-center">
+        <h1>Add Entry</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-fourth">
+        <input> dropbox
+      </div>
+      <div class="col-fourth">
+        <input> dropbox
+      </div>
+      <div class="col-half"></div>
+    </div>
+    <div class="row">
+      <div class="col-full">
+        <textarea>Description</textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-full text-right">
+        <button id="submit-button text-center button">Submit</button>
+      </div>
+    </div>
+  </div>
 
   <script src="main.js"></script>
 </body>

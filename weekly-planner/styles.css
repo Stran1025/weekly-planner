@@ -1,0 +1,56 @@
+.container {
+  margin: auto;
+}
+
+.row {
+  display: flex;
+}
+
+.col-full {
+  width: 100%;
+}
+
+.col-half {
+  width: 50%;
+}
+
+.col-fourth {
+  width: 25%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.button {
+  background-color: blue;
+  border-radius: 5px;
+  border: 1px solid blue;
+  color: white;
+  padding: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(0 0 0 / 50%);
+  height: 100vh;
+  z-index: 1;
+}
+
+.modal {
+  z-index: 2;
+}
