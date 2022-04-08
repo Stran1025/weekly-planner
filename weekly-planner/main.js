@@ -48,6 +48,12 @@ function tableClickHandler(event) {
     return;
   }
   $modal.classList.remove('hidden');
+  $form.day.value = event.target.getAttribute('data-days');
+  for (var i = 0; i < data.days[event.target.getAttribute('data-days')].length; i++) {
+    if (event.target.getAttribute('data-event-id') === data.days[event.target.getAttribute('data-days')][i].eventId.toString()) {
+      $form.time.value = data.days[event.target.getAttribute('data-days')][i].time;
+    }
+  }
 }
 
 $addEntryButton.addEventListener('click', handleEntry);
