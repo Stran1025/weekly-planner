@@ -81,10 +81,18 @@
   margin: 25px;
 }
 
-p {
+.p-center {
   margin-top: 60px;
 }
 
 textarea {
   width: 100%;
+}
+
+table {
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid black;
 }
