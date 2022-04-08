@@ -21,6 +21,7 @@ var $amPm = document.querySelector('#am-pm');
 var $timeSelect = document.querySelector('#time');
 var $description = document.querySelector('#description');
 var $dayRow = document.querySelector('#day-row');
+var $taskListHeading = document.querySelector('#task-list-heading');
 
 $addEntryButton.addEventListener('click', handleEntry);
 function handleEntry(event) {
@@ -40,6 +41,32 @@ function handleSubmit(event) {
 
 $dayRow.addEventListener('click', dayButton);
 function dayButton(event) {
-  if (event.target.textContent === 'Monday') {
+  if (!event.target.matches('p')) {
+    return;
+  }
+  for (var key in data.days) {
+    if (event.target.getAttribute('data-days') === key) {
+      $taskListHeading.textContent = 'Scheduled Event for' + ' ' + key[0].toUpperCase() + key.substring(1);
+      createTable(data.days[key]);
+    }
+  }
+}
+
+function createTable(array) {
+  // <table>
+  //   <tbody>
+  //     <tr> repeat for all index
+  //       <td>obj[i].time</td>
+  //       <td>obj[i.description</td>
+  //     </tr>
+  //   </tbody>
+  // </table>
+  var $tbody = document.createElement('tbody');
+  for (var i = 0; i < array.length; i++) {
+    var $tr = document.createElement('tr');
+    var $timeTD = document.createElement('td');
+    var $descrTD = document.createElement('td');
+
+    $timeTD.textContent = array[i].time;
   }
 }

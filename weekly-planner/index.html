@@ -16,25 +16,25 @@
     </div>
     <div class="row justify-content" id="day-row">
       <div class="col-8 text-center day-button">
-        <p class="p-center">Sunday</p>
+        <p data-days="sunday" class="p-center">Sunday</p>
       </div>
       <div class="col-8 text-center day-button">
-        <p class="p-center">Monday</p>
+        <p data-days="monday" class="p-center">Monday</p>
       </div>
       <div class="col-8 text-center day-button">
-        <p class="p-center">Tuesday</p>
+        <p data-days="tuesday" class="p-center">Tuesday</p>
       </div>
       <div class="col-8 text-center day-button">
-        <p class="p-center">Wednesday</p>
+        <p data-days="wednesday" class="p-center">Wednesday</p>
       </div>
       <div class="col-8 text-center day-button">
-        <p class="p-center">Thursday</p>
+        <p data-days="thursday" class="p-center">Thursday</p>
       </div>
       <div class="col-8 text-center day-button">
-        <p class="p-center">Friday</p>
+        <p data-days="friday" class="p-center">Friday</p>
       </div>
       <div class="col-8 text-center day-button">
-        <p class="p-center">Saturday</p>
+        <p data-days="saturday" class="p-center">Saturday</p>
       </div>
     </div>
     <div class="row">
@@ -46,19 +46,19 @@
     </div>
     <div class="row">
       <div class="col-full">
-        <h2 class="text-center">Scheduled Event for </h2>
+        <h2 id="task-list-heading" class="text-center">Scheduled Event for </h2>
       </div>
     </div>
     <div class="row">
       <div class="col-full">
-        <table class="table">
+        <table id="display-table" class="table">
           <thead>
             <tr>
               <td>Time</td>
               <td>Description</td>
             </tr>
           </thead>
-          <tbody>
+          <!-- <tbody>
             <tr>
               <td>10:00</td>
               <td>test</td>
@@ -68,7 +68,7 @@
             <tr></tr>
             <tr></tr>
             <tr></tr>
-          </tbody>
+          </tbody> -->
         </table>
       </div>
     </div>
