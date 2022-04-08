@@ -1,7 +1,7 @@
 var data = {
   view: '',
   days: {
-    monday: [],
+    monday: [{ time: '10:00', description: 'test' }],
     tuesday: [],
     wednesday: [],
     thursday: [],
@@ -22,6 +22,7 @@ var $timeSelect = document.querySelector('#time');
 var $description = document.querySelector('#description');
 var $dayRow = document.querySelector('#day-row');
 var $taskListHeading = document.querySelector('#task-list-heading');
+var $table = document.querySelector('#display-table');
 
 $addEntryButton.addEventListener('click', handleEntry);
 function handleEntry(event) {
@@ -35,7 +36,6 @@ function handleSubmit(event) {
   obj.time = $timeSelect.value + ' ' + $amPm.value.toUpperCase();
   obj.description = $description.value;
   $modal.classList.add('hidden');
-  console.log($daySelect.value);
   data.days[$daySelect.value].push(obj);
 }
 
@@ -46,21 +46,18 @@ function dayButton(event) {
   }
   for (var key in data.days) {
     if (event.target.getAttribute('data-days') === key) {
+      var $tbody = document.querySelector('tbody');
+      if ($tbody !== null) {
+        $tbody.remove();
+      }
       $taskListHeading.textContent = 'Scheduled Event for' + ' ' + key[0].toUpperCase() + key.substring(1);
-      createTable(data.days[key]);
+      var $tableBody = createTable(data.days[key]);
+      $table.appendChild($tableBody);
     }
   }
 }
 
 function createTable(array) {
-  // <table>
-  //   <tbody>
-  //     <tr> repeat for all index
-  //       <td>obj[i].time</td>
-  //       <td>obj[i.description</td>
-  //     </tr>
-  //   </tbody>
-  // </table>
   var $tbody = document.createElement('tbody');
   for (var i = 0; i < array.length; i++) {
     var $tr = document.createElement('tr');
@@ -68,5 +65,10 @@ function createTable(array) {
     var $descrTD = document.createElement('td');
 
     $timeTD.textContent = array[i].time;
+    $descrTD.textContent = array[i].description;
+    $tr.appendChild($timeTD);
+    $tr.appendChild($descrTD);
+    $tbody.appendChild($tr);
   }
+  return $tbody;
 }
