@@ -61,3 +61,7 @@
   background-color: white;
   padding: 50px;
 }
+
+textarea {
+  width: 100%;
+}

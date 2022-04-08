@@ -8,7 +8,7 @@
   <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-  <div class="container hidden p-relative">
+  <div class="container p-relative">
     <div class="row">
       <div class="col-full text-center">
         <h1 class="">Weekly Planner</h1>
@@ -22,62 +22,64 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="col-full overlay"></div>
-    <div class="modal">
-      <div class="row">
-        <div class="col-full text-center">
-          <h1>Add Entry</h1>
+  <div class="container hidden" id="modal">
+    <form id="entry-form">
+      <div class="col-full overlay"></div>
+      <div class="modal">
+        <div class="row">
+          <div class="col-full text-center">
+            <h1>Add Entry</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-fourth">
+            <select>
+              <option value="">Day of Week</option>
+              <option value="Sunday">Sunday</option>
+              <option value="Monday">Mondday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+            </select>
+          </div>
+          <div class="col-fourth">
+            <select>
+              <option value="">Time</option>
+              <option value="1">1:00</option>
+              <option value="2">2:00</option>
+              <option value="3">3:00</option>
+              <option value="4">4:00</option>
+              <option value="5">5:00</option>
+              <option value="6">6:00</option>
+              <option value="7">7:00</option>
+              <option value="8">8:00</option>
+              <option value="9">9:00</option>
+              <option value="10">10:00</option>
+              <option value="11">11:00</option>
+              <option value="12">12:00</option>
+            </select>
+          </div>
+          <div class="col-fourth">
+            <select>
+              <option value="am">AM</option>
+              <option value="pm">PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-full">
+            <textarea rows="7">Description</textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-full text-right">
+            <button type="submit" id="submit-button" class="text-center button">Submit</button>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-fourth">
-          <select>
-            <option value="">Day of Week</option>
-            <option value="Sunday">Sunday</option>
-            <option value="Monday">Mondday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-          </select>
-        </div>
-        <div class="col-fourth">
-          <select>
-            <option value="">Time</option>
-            <option></option>
-            <option></option>
-            <option></option>
-            <option></option>
-            <option></option>
-            <option></option>
-            <option></option>
-            <option></option>
-            <option></option>
-            <option></option>
-            <option></option>
-            <option></option>
-          </select>
-        </div>
-        <div class="col-fourth">
-          <select>
-            <option></option>
-            <option></option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-full">
-          <textarea>Description</textarea>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-full text-right">
-          <button id="submit-button text-center button">Submit</button>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
 
   <script src="main.js"></script>
