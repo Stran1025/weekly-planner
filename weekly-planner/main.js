@@ -48,12 +48,23 @@ function tableClickHandler(event) {
     return;
   }
   $modal.classList.remove('hidden');
-  $form.day.value = event.target.getAttribute('data-days');
   for (var i = 0; i < data.days[event.target.getAttribute('data-days')].length; i++) {
     if (event.target.getAttribute('data-event-id') === data.days[event.target.getAttribute('data-days')][i].eventId.toString()) {
-      $form.time.value = data.days[event.target.getAttribute('data-days')][i].time;
+      data.editing = data.days[event.target.getAttribute('data-days')][i];
     }
   }
+  updateEntry(data.editing);
+}
+
+function updateEntry(obj) {
+  if (data.editing !== null) {
+    $form.time.value = obj.time;
+    $form.description.value = obj.description;
+    $form.day.value = obj.dayOfTheWeek;
+  }
+  var $tbody = document.querySelector('tbody');
+  $tbody.remove();
+  createTable(data.days[obj.dayOfTheWeek]);
 }
 
 $addEntryButton.addEventListener('click', handleEntry);
@@ -64,14 +75,17 @@ function handleEntry(event) {
 $form.addEventListener('submit', handleSubmit);
 function handleSubmit(event) {
   event.preventDefault();
-  var obj = {};
-  obj.dayOfTheWeek = $daySelect.value;
-  obj.eventId = data.nextEventId;
-  obj.time = $timeSelect.value + ' ' + $amPm.value.toUpperCase();
-  obj.description = $description.value;
-  $modal.classList.add('hidden');
-  data.days[$daySelect.value].push(obj);
-  data.nextEventId++;
+  if (data.editing === null) {
+    var obj = {};
+    obj.dayOfTheWeek = $daySelect.value;
+    obj.eventId = data.nextEventId;
+    obj.time = $timeSelect.value;
+    obj.amPM = $amPm.value;
+    obj.description = $description.value;
+    $modal.classList.add('hidden');
+    data.days[$daySelect.value].push(obj);
+    data.nextEventId++;
+  }
 }
 
 $dayRow.addEventListener('click', dayButton);
@@ -93,8 +107,8 @@ function dayButton(event) {
 }
 
 function createTable(array) {
-  var $tbody = document.createElement('tbody');
   for (var i = 0; i < array.length; i++) {
+    var $tbody = document.createElement('tbody');
     var $tr = document.createElement('tr');
     var $timeTD = document.createElement('td');
     var $descrTD = document.createElement('td');
@@ -109,10 +123,11 @@ function createTable(array) {
     $updateButton.setAttribute('data-days', array[i].dayOfTheWeek);
     $updateButton.className = 'update-button button';
     $tr.setAttribute('data-event-id', array[i].eventId);
+    $tr.setAttribute('id', 'entry-' + array[i].eventId);
     $tr.appendChild($timeTD);
     $tr.appendChild($descrTD);
     $descrTD.appendChild($updateButton);
-    $tbody.appendChild($tr);
+
   }
   return $tbody;
 }
